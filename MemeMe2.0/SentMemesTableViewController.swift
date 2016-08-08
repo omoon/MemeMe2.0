@@ -18,7 +18,6 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.memes = appDelegate.memes
         self.tableView.reloadData()
-        print(self.memes)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,7 +34,7 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemeDetailViewController") as! SentMemeDetailViewController
+        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
         detailViewController.meme = self.memes[indexPath.row]
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }

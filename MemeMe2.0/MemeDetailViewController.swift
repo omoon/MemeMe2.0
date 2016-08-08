@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SentMemeDetailViewController: UIViewController {
+class MemeDetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     

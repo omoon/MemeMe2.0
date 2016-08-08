@@ -15,11 +15,17 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDeleg
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         changeFlowLayout(UIDevice.currentDevice().orientation)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.memes = appDelegate.memes
         self.collectionView.reloadData()
+        changeFlowLayout(UIDevice.currentDevice().orientation)
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -50,7 +56,7 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDeleg
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemeDetailViewController") as! SentMemeDetailViewController
+        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
         detailViewController.meme = self.memes[indexPath.row]
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
